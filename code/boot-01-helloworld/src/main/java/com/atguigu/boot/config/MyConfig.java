@@ -1,9 +1,11 @@
 package com.atguigu.boot.config;
 
+import ch.qos.logback.core.boolex.Matcher;
 import com.atguigu.boot.bean.Pet;
 import com.atguigu.boot.bean.User;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 
 /**
  * 1、配置类里面使用 @Bean标注在方法上给容器注册组件，默认也是单实例的
@@ -11,11 +13,14 @@ import org.springframework.context.annotation.Configuration;
  * 3、proxyBeanMethods: 代理 bean的方法
  * Full(proxyBeanMethods = true): 保证每个 @Bean方法被调用多少次返回的组件都是单实例的
  * Lite(proxyBeanMethods = false): 每个@Bean方法被调用多少次返回的组件都是新创建的
- *
+ * <p>
  * 组件依赖必须使用 Full模式，其他默认都是 Lite模式
- *
+ * <p>
+ * 4、@Import({User.class, Matcher.class})
+ * 给容器中自动创建出这两个类型的组件、默认组件的名字就是全类名
  */
-@Configuration(proxyBeanMethods = false)
+@Import({User.class, Matcher.class})
+@Configuration(proxyBeanMethods = false) /* 告诉 SpringBoot这是一个配置类 === 配置文件 */
 public class MyConfig
 {
 

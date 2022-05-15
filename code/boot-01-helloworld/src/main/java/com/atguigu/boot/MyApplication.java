@@ -1,5 +1,7 @@
 package com.atguigu.boot;
 
+import ch.qos.logback.core.ContextBase;
+import ch.qos.logback.core.boolex.Matcher;
 import com.atguigu.boot.bean.Pet;
 import com.atguigu.boot.bean.User;
 import com.atguigu.boot.config.MyConfig;
@@ -40,7 +42,7 @@ public class MyApplication
         //
         // System.out.println("组件: " + (tom01 == tom02));
 
-        // com.atguigu.boot.config.MyConfig$$EnhancerBySpringCGLIB$$51f1e1ca@1654a892
+        // 4、com.atguigu.boot.config.MyConfig$$EnhancerBySpringCGLIB$$51f1e1ca@1654a892
         MyConfig bean = run.getBean(MyConfig.class);
         System.out.println(bean);
 
@@ -53,5 +55,16 @@ public class MyApplication
         User user01 = run.getBean("user01", User.class);
         Pet tom = run.getBean("tom22", Pet.class);
         System.out.println("用户的宠物: " + (user01.getPet() == tom));
+
+        // 5、获取组件
+        String[] beanNamesForType = run.getBeanNamesForType(User.class);
+        System.out.println("===============================");
+        for (String s : beanNamesForType)
+        {
+            System.out.println(s);
+        }
+
+        Matcher matcher = run.getBean(Matcher.class);
+        System.out.println(matcher);
     }
 }
