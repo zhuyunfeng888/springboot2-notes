@@ -67,13 +67,18 @@ public class MyApplication
         // Matcher matcher = run.getBean(Matcher.class);
         // System.out.println(matcher);
 
-        boolean tom = run.containsBean("tom");
-        System.out.println("容器中Tom组件: " + tom);
+        // boolean tom = run.containsBean("tom");
+        // System.out.println("容器中Tom组件: " + tom);
+        //
+        // boolean user01 = run.containsBean("user01");
+        // System.out.println("容器中user01组件: " + user01);
+        //
+        // boolean tom22 = run.containsBean("tom22");
+        // System.out.println("容器中tom22组件: " + tom22);
 
-        boolean user01 = run.containsBean("user01");
-        System.out.println("容器中user01组件: " + user01);
-
-        boolean tom22 = run.containsBean("tom22");
-        System.out.println("容器中tom22组件: " + tom22);
+        boolean haha = run.containsBean("haha");
+        boolean hehe = run.containsBean("hehe");
+        System.out.println("haha：" + haha);
+        System.out.println("hehe：" + hehe);
     }
 }
