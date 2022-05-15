@@ -43,28 +43,37 @@ public class MyApplication
         // System.out.println("组件: " + (tom01 == tom02));
 
         // 4、com.atguigu.boot.config.MyConfig$$EnhancerBySpringCGLIB$$51f1e1ca@1654a892
-        MyConfig bean = run.getBean(MyConfig.class);
-        System.out.println(bean);
+        // MyConfig bean = run.getBean(MyConfig.class);
+        // System.out.println(bean);
 
         // 如果@Configuration(proxyBeanMethods = true)代理对象调用方法。SpringBoot总会检查这个组件是否在容器中有。
         // 保持组件单实例
-        User user = bean.user01();
-        User user2 = bean.user01();
-        System.out.println(user == user2);
+        // User user = bean.user01();
+        // User user2 = bean.user01();
+        // System.out.println(user == user2);
+        //
+        // User user01 = run.getBean("user01", User.class);
+        // Pet tom = run.getBean("tom22", Pet.class);
+        // System.out.println("用户的宠物: " + (user01.getPet() == tom));
+        //
+        // // 5、获取组件
+        // String[] beanNamesForType = run.getBeanNamesForType(User.class);
+        // System.out.println("===============================");
+        // for (String s : beanNamesForType)
+        // {
+        //     System.out.println(s);
+        // }
+        //
+        // Matcher matcher = run.getBean(Matcher.class);
+        // System.out.println(matcher);
 
-        User user01 = run.getBean("user01", User.class);
-        Pet tom = run.getBean("tom22", Pet.class);
-        System.out.println("用户的宠物: " + (user01.getPet() == tom));
+        boolean tom = run.containsBean("tom");
+        System.out.println("容器中Tom组件: " + tom);
 
-        // 5、获取组件
-        String[] beanNamesForType = run.getBeanNamesForType(User.class);
-        System.out.println("===============================");
-        for (String s : beanNamesForType)
-        {
-            System.out.println(s);
-        }
+        boolean user01 = run.containsBean("user01");
+        System.out.println("容器中user01组件: " + user01);
 
-        Matcher matcher = run.getBean(Matcher.class);
-        System.out.println(matcher);
+        boolean tom22 = run.containsBean("tom22");
+        System.out.println("容器中tom22组件: " + tom22);
     }
 }

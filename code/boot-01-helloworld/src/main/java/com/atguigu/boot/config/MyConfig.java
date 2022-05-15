@@ -3,6 +3,8 @@ package com.atguigu.boot.config;
 import ch.qos.logback.core.boolex.Matcher;
 import com.atguigu.boot.bean.Pet;
 import com.atguigu.boot.bean.User;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -20,6 +22,8 @@ import org.springframework.context.annotation.Import;
  * 给容器中自动创建出这两个类型的组件、默认组件的名字就是全类名
  */
 @Import({User.class, Matcher.class})
+// @ConditionalOnBean(name = "tom22")
+@ConditionalOnMissingBean(name = "tom")
 @Configuration(proxyBeanMethods = false) /* 告诉 SpringBoot这是一个配置类 === 配置文件 */
 public class MyConfig
 {
@@ -29,6 +33,7 @@ public class MyConfig
      *
      * @return
      */
+
     @Bean /* 给容器中添加组件，以方法名作为组件的id，返回类型就是组件类型，返回的值，就是组件在容器中的实例 */
     public User user01()
     {
